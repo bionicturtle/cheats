@@ -1,0 +1,41 @@
+---
+title: "R workflow reference"
+output: html_notebook
+---
+ 
+Each time R starts, it reads two files
+
+* .Renviron
+* .Rprofile (simple, more common, text files)
+
+Checks in three locations, in order:
+
+1. working directory; getwd()
+2. HOME; via Sys.getenv("HOME")
+3. R_HOME: via R.home
+
+Here is [Initialization at Start of an R Session](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Startup.html)
+
+```{r}
+?Startup # Initialization at Start of an R Session
+Sys.info()
+file.path(R.home("bin"), "R")
+
+getwd()
+Sys.getenv("HOME")
+R.home()
+
+```
+
+Check for .Rprofile
+```{r}
+site_path = R.home(component = "home")
+fname = file.path(site_path, "etc", "Rprofile.site")
+file.exists(fname)
+```
+
+
+RStudio
+
+[Customizing RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio)
+
